@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import '../../../features/home/presentation/pages/dashboard_screen.dart';
+import '../../images/images.dart';
 
 class SplashScreen extends StatefulWidget {
-  static var route;
+  static const String route = 'splash';
 
   const SplashScreen({super.key});
 
@@ -9,20 +12,42 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-
 class _SplashScreenState extends State<SplashScreen> {
-    @override
+  @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
-      // context.go('/dashboard'); // ใช้ GoRouter ไปหน้า Dashboard
-    });
+    SchedulerBinding.instance.addPostFrameCallback(
+      (_) async {
+        await bootApp();
+      },
+    );
+  }
+
+  Future<void> bootApp() async {
+    // Implement method if you have logic to start
+    await Future.delayed(Duration(seconds: 2));
+    if (mounted) {
+      Navigator.pushReplacementNamed(context, DashBoardScreen.route);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("ยินดีต้อนรับ")), // หรือใช้โลโก้แอป
+      backgroundColor: Colors.white,
+      bottomNavigationBar: Text(
+        "Powered by SOCKET 9 CO.,LTD.",
+        style: TextStyle(color: Colors.black),
+      ),
+      body: Center(
+        child: Image.asset(
+          width: 250,
+          height: 250,
+          alignment: Alignment.topCenter,
+          CommonImage.logoSplash,
+          fit: BoxFit.fitWidth,
+        ),
+      ),
     );
   }
 }

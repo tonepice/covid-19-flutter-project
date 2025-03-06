@@ -1,4 +1,5 @@
-// lib/features/covid/data/datasources/covid_remote_data_source.dart
+import 'package:flutter/foundation.dart';
+
 import '../../../../core/network/network_client.dart';
 import '../models/covid_stats_model.dart';
 
@@ -14,13 +15,22 @@ class CovidRemoteDataSourceImpl implements CovidRemoteDataSource {
   @override
   Future<List<CovidStatsModel>> fetchCovidStatsModel() async {
     try {
-      final response = await _client.get('/covid-stats');
+      final response = await _client.get('/Cases/today-cases-by-provinces');
 
-      List<CovidStatsModel> covidData = (response.data as List)
-          .map((json) => CovidStatsModel.fromJson(json))
-          .toList();
+      if (response.data != null) {
+        if (kDebugMode) {
+          print(response.data);
+        }
+        List<CovidStatsModel> covidData = (response.data as List)
+            .where((json) => json != null)
+            .map((json) =>
+                CovidStatsModel.fromJson(json as Map<String, dynamic>))
+            .toList();
 
-      return covidData;
+        return covidData;
+      } else {
+        throw Exception('Response data is null');
+      }
     } catch (e) {
       throw Exception('Failed to fetch Covid stats: $e');
     }

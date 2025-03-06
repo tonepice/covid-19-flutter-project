@@ -1,32 +1,57 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 part 'covid_stats_model.g.dart';
 
 @JsonSerializable()
 class CovidStatsModel extends Equatable {
-  final String txnDate;
-  final String province;
-  final int newCase;
-  final int totalCase;
-  final int newCaseExcludeAbroad;
-  final int totalCaseExcludeAbroad;
-  final int newDeath;
-  final int totalDeath;
-  final String updateDate;
+  @JsonKey(name: 'txn_date') // กำหนดชื่อให้ตรงกับ JSON
+  final String? txnDate;
+
+  @JsonKey(name: 'province')
+  final String? province;
+
+  @JsonKey(name: 'new_case')
+  final int? newCase;
+
+  @JsonKey(name: 'total_case')
+  final int? totalCase;
+
+  @JsonKey(name: 'new_case_excludeabroad')
+  final int? newCaseExcludeAbroad;
+
+  @JsonKey(name: 'total_case_excludeabroad')
+  final int? totalCaseExcludeAbroad;
+
+  @JsonKey(name: 'new_death')
+  final int? newDeath;
+
+  @JsonKey(name: 'total_death')
+  final int? totalDeath;
+
+  @JsonKey(name: 'update_date')
+  final String? updateDate;
+
+  @JsonKey(name: 'year')
+  final int? year;
+
+  @JsonKey(name: 'weeknum')
+  final int? weeknum;
 
   const CovidStatsModel({
-    required this.txnDate,
-    required this.province,
-    required this.newCase,
-    required this.totalCase,
-    required this.newCaseExcludeAbroad,
-    required this.totalCaseExcludeAbroad,
-    required this.newDeath,
-    required this.totalDeath,
-    required this.updateDate,
+    this.txnDate,
+    this.province,
+    this.newCase,
+    this.totalCase,
+    this.newCaseExcludeAbroad,
+    this.totalCaseExcludeAbroad,
+    this.newDeath,
+    this.totalDeath,
+    this.updateDate,
+    this.year,
+    this.weeknum,
   });
 
-  /// **Constructor ค่าเริ่มต้น**
   const CovidStatsModel.pure()
       : txnDate = '',
         province = '',
@@ -36,7 +61,9 @@ class CovidStatsModel extends Equatable {
         totalCaseExcludeAbroad = 0,
         newDeath = 0,
         totalDeath = 0,
-        updateDate = '';
+        updateDate = '',
+        year = 0,
+        weeknum = 0;
 
   /// **แปลง JSON -> Object**
   factory CovidStatsModel.fromJson(Map<String, dynamic> json) =>
@@ -56,5 +83,7 @@ class CovidStatsModel extends Equatable {
         newDeath,
         totalDeath,
         updateDate,
+        year,
+        weeknum,
       ];
 }

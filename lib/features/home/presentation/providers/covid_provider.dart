@@ -24,13 +24,13 @@ final covidStatsProvider = FutureProvider<List<CovidStatsEntity>>((ref) async {
   try {
     final covidStats = await covidRepository.getCovidStats();
     return covidStats.map((model) => CovidStatsEntity(
-      txnDate: model.txnDate,
-      province: model.province,
-      newCase: model.newCase,
-      totalCase: model.totalCase,
-      newDeath: model.newDeath,
-      totalDeath: model.totalDeath,
-      updateDate: model.updateDate,
+       txnDate: model.txnDate,  // กำหนดค่าเริ่มต้นเป็นค่าว่างถ้าเป็น null
+        province: model.province,  // ถ้าเป็น null ให้ใช้ 'Unknown'
+        newCase: model.newCase,  // ถ้าเป็น null ให้ใช้ 0
+        totalCase: model.totalCase,  // ถ้าเป็น null ให้ใช้ 0
+        newDeath: model.newDeath,  // ถ้าเป็น null ให้ใช้ 0
+        totalDeath: model.totalDeath,  // ถ้าเป็น null ให้ใช้ 0
+        updateDate: model.updateDate,  // ถ้าเป็น null ให้ใช้ค่าว่าง
     )).toList();
   } catch (e) {
     throw Exception('Failed to fetch Covid stats: $e');

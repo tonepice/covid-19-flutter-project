@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/covid_provider.dart';
+import '../widgets/stats_card.dart';
 
 class DashBoardScreen extends ConsumerStatefulWidget {
   static const String route = 'dash-board-screen';
@@ -26,21 +27,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
             itemCount: covidStats.length,
             itemBuilder: (context, index) {
               final stat = covidStats[index];
-              return Card(
-                margin: const EdgeInsets.all(8),
-                child: ListTile(
-                  title: Text(stat.province),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('New Cases: ${stat.newCase}'),
-                      Text('Total Cases: ${stat.totalCase}'),
-                      Text('New Deaths: ${stat.newDeath}'),
-                      Text('Total Deaths: ${stat.totalDeath}'),
-                    ],
-                  ),
-                ),
-              );
+              return StatsCard(covidStatsEntity: stat);
             },
           );
         },
@@ -51,15 +38,29 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
             children: const [
               CircularProgressIndicator(),
               SizedBox(height: 16),
-              Text('Loading data... Please wait', style: TextStyle(fontSize: 18)),
+              Text('Loading data... Please wait',
+                  style: TextStyle(fontSize: 18)),
             ],
           ),
         ),
         // กรณีเกิดข้อผิดพลาด
         error: (error, stackTrace) => Center(
-          child: Text(
-            'Error: $error',
-            style: const TextStyle(color: Colors.red, fontSize: 18),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Error: เกิดข้อผิดพลาดในการเรียกข้อมูล $error',
+                style: const TextStyle(color: Colors.red, fontSize: 18),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  // ignore: unused_result
+                  ref.refresh(covidStatsProvider);
+                },
+                child: const Text('ลองใหม่'),
+              ),
+            ],
           ),
         ),
       ),

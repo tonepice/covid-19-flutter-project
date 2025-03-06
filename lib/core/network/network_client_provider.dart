@@ -1,12 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'network_client.dart';
-import 'package:dio/dio.dart';  // import Dio
+import 'package:dio/dio.dart';
 
-// Provider สำหรับ NetworkClient
 final networkClientProvider = Provider<NetworkClient>((ref) {
-  // สร้าง instance ของ Dio
-  final dio = Dio(BaseOptions(baseUrl: 'https://your-api-url.com'));
+  final dio = Dio(BaseOptions(baseUrl: 'https://covid19.ddc.moph.go.th/api'));
   
-  // สร้างและคืนค่า NetworkClient
-  return NetworkClient(dio);  // สร้าง NetworkClient และคืนค่า
+  return NetworkClient(dio);  
 });

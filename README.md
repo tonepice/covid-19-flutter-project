@@ -45,3 +45,23 @@ $ flutter pub run flutter_launcher_icons:main
 $ flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
 -------
+
+
+### Build the app
+#### Dev
+```console
+IOS: 
+flutter build ipa -t lib/main_dev.dart --flavor dev
+
+ANDROID: 
+flutter build apk --flavor dev -t lib/main_dev.dart
+```
+
+#### Prod
+```console
+IOS: 
+flutter build ipa -t lib/main_prod.dart --flavor prod
+
+ANDROID: 
+flutter build appbundle -t lib/main_prod.dart --flavor prod
+```

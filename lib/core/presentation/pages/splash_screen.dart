@@ -35,9 +35,16 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: Text(
-        "Powered by SOCKET 9 CO.,LTD.",
-        style: TextStyle(color: Colors.black),
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.all(30),
+        child: Text(
+          "Powered by SOCKET 9 CO.,LTD.",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: TextTheme.of(context).bodyLarge?.fontSize ?? 20,
+            color: Colors.black,
+          ),
+        ),
       ),
       body: Center(
         child: Image.asset(

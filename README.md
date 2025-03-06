@@ -38,3 +38,10 @@ samples, guidance on mobile development, and a full API reference.
 ``` console
 $ flutter pub run flutter_launcher_icons:main
 ```
+
+#### Generate model .g
+
+``` console
+$ flutter packages pub run build_runner build --delete-conflicting-outputs
+```
+-------

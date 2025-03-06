@@ -38,10 +38,15 @@ dependencies:
   loading_indicator: ^3.1.1
   riverpod: ^2.6.1
   riverpod_lint: ^2.6.5
+  flutter_riverpod: ^2.6.1
   easy_localization: ^3.0.7+1
   flutter_launcher_icons: ^0.14.3
   google_fonts: ^6.2.1
   path_provider: ^2.1.5
+  dio: ^5.8.0+1
+  equatable: ^2.0.7
+  pretty_dio_logger: ^1.4.0
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +58,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  build_runner: ^2.4.15
+  json_serializable: ^6.9.4
 
 flutter_icons:
   android: true

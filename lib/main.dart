@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:covid_19_flutter/app.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -28,3 +27,4 @@ void run(Config config) async {
     debugPrint("error");
   });
 }
+

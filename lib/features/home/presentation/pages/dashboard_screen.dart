@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/covid_provider.dart';
@@ -35,10 +36,11 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                   ElevatedButton(
                     onPressed: () async {
                       ref.read(isLoadingProvider.notifier).state = true;
+                      // ignore: unused_result
                       await ref.refresh(covidStatsProvider.future);
                       ref.read(isLoadingProvider.notifier).state = false;
                     },
-                    child: const Text('ดึงข้อมูลใหม่'),
+                    child: Text('common.reload'.tr()),
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -49,7 +51,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                       });
                       setState(() {});
                     },
-                    child: const Text('เรียงจังหวัด'),
+                    child: Text('common.arrange_provinces'.tr()),
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -60,13 +62,12 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                       });
                       setState(() {});
                     },
-                    child: const Text('เรียงตามจำนวนเคส'),
+                    child: Text('common.sort_case'.tr()),
                   ),
                 ],
               ),
             ),
           ),
-          // แสดง Indicator กลางจอถ้าโหลดอยู่
           if (isLoading)
             const Expanded(
               child: Center(
@@ -97,15 +98,15 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                       SizedBox(height: 16),
                       ElevatedButton(
                         onPressed: () {
+                          // ignore: unused_result
                           ref.refresh(covidStatsProvider);
                         },
-                        child: const Text('ลองใหม่'),
+                        child: Text('common.try_agian'.tr()),
                       ),
                     ],
                   ),
                 ),
-                loading: () =>
-                    const SizedBox(), // ไม่ต้องแสดงอะไร เพราะใช้ isLoadingProvider แทน
+                loading: () => const SizedBox(),
               ),
             ),
         ],

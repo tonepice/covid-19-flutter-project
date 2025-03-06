@@ -9,7 +9,7 @@
             "args": [
                 "-t",
                 "lib/main_dev.dart",
-                "--flavor",
+                "--flavor", //if run ios comment this 
                 "dev"
             ]
         },
@@ -21,7 +21,7 @@
             "args": [
                 "-t",
                 "lib/main_prod.dart",
-                "--flavor",
+                "--flavor", //if run ios comment this 
                 "prod"
             ]
         },
@@ -33,7 +33,7 @@
             "args": [
                 "-t",
                 "lib/main_dev.dart",
-                "--flavor",
+                "--flavor", //if run ios comment this 
                 "dev"
             ]
         },
@@ -45,8 +45,8 @@
             "args": [
                 "-t",
                 "lib/main_prod.dart",
-                "--flavor",
-                "prod"
+                "--flavor", //if run ios comment this 
+                "prod" 
             ]
         },
         {

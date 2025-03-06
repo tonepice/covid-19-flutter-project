@@ -11,6 +11,10 @@
     "notfound": "Data not found",
     "see_more": "More",
     "exis_app": "Do you want to exit application ?",
-    "error": "An error occurred.\nPlease try again."
+    "error": "An error occurred.\nPlease try again.",
+    "try_agian": "Try again",
+    "reload": "Reload",
+    "arrange_provinces":"Arrange provinces",
+    "sort_case":"Sort by case"
   }
 }

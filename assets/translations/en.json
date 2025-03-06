@@ -1,0 +1,16 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "confirm": "Confirm",
+    "no_image": "No image",
+    "yes_or_no": "Yes/No",
+    "ok": "OK",
+    "cancel": "CANCEL",
+    "more": "More",
+    "under_development": "Under development",
+    "notfound": "Data not found",
+    "see_more": "More",
+    "exis_app": "Do you want to exit application ?",
+    "error": "An error occurred.\nPlease try again."
+  }
+}
